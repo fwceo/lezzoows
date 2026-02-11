@@ -23,7 +23,7 @@ const SERVICES = [
 ];
 
 const TIMELINE = [
-  { year: "2015", event: "Three friends in a Costa Coffee in Erbil dream of digitizing reality. They call themselves Fastwares.", side: "left" },
+  { year: "2015", event: "Two friends in a Costa Coffee in Erbil dream of digitizing reality. They call themselves Fastwares.", side: "left" },
   { year: "2017", event: "In London, Yadgar sees a Deliveroo rider zip past. \"I wish we had this back home.\"", side: "right" },
   { year: "2018", event: "Lezzoo launches with 12 restaurants. Rekar delivers the first order in his own car.", side: "left" },
   { year: "2018", event: "Y Combinator says yes. Lezzoo becomes the first and only Iraqi startup in YC history.", side: "right" },
@@ -48,7 +48,7 @@ const CITIES = [
   { name: "Duhok", x: 38, y: 22, info: "Since 2018" },
   { name: "Kirkuk", x: 52, y: 68, info: "Expanding" },
   { name: "Zakho", x: 28, y: 15, info: "Newest market" },
-  { name: "Mosul", x: 42, y: 45, info: "Expanding" },
+  { name: "Mosul", x: 28, y: 45, info: "Expanding" },
 ];
 
 
@@ -112,7 +112,7 @@ function useScrollDirection() {
 
 // ─── ANIMATED ENTRY WRAPPER ───
 function Reveal({ children, className = "", delay = 0, direction = "up" }: { children: React.ReactNode; className?: string; delay?: number; direction?: string }) {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
+  const [ref, isInView] = useInView({ threshold: 0.05, rootMargin: "50px" });
   const transforms: Record<string, string> = { up: "translateY(40px)", down: "translateY(-40px)", left: "translateX(-40px)", right: "translateX(40px)", none: "none" };
   return (
     <div ref={ref} className={className} style={{ opacity: isInView ? 1 : 0, transform: isInView ? "none" : transforms[direction], transition: `opacity 0.7s cubic-bezier(.25,.46,.45,.94) ${delay}s, transform 0.7s cubic-bezier(.25,.46,.45,.94) ${delay}s` }}>
@@ -315,7 +315,7 @@ function StoryTimeline() {
         </div>
         <Reveal>
           <div style={{ textAlign: "center", marginTop: 32 }}>
-            <a href="#" style={{ color: "#E63946", fontWeight: 600, textDecoration: "none", fontSize: "0.95rem", borderBottom: "1px solid rgba(230,57,70,0.3)", paddingBottom: 2 }}>Read the Full Story →</a>
+            <a href="/story" style={{ color: "#E63946", fontWeight: 600, textDecoration: "none", fontSize: "0.95rem", borderBottom: "1px solid rgba(230,57,70,0.3)", paddingBottom: 2 }}>Read the Full Story →</a>
           </div>
         </Reveal>
       </div>
@@ -469,13 +469,6 @@ function WhyLezzoo() {
       desc: "In a country that runs on cash, Lezzoo Pay is pioneering digital payments — replacing physical money with a seamless in-app wallet experience.",
       color: "#00B4D8",
     },
-    {
-      icon: "🌍",
-      stat: "6 cities",
-      label: "Rooted in Kurdistan, built for the world",
-      desc: "Operating across Erbil, Sulaymaniyah, Duhok, Kirkuk, Zakho, and Mosul — with ambitions that stretch far beyond Iraq's borders.",
-      color: "#06D6A0",
-    },
   ];
 
   return (
@@ -552,9 +545,7 @@ function WhyLezzoo() {
         <Reveal delay={0.4}>
           <div style={{ textAlign: "center", marginTop: 56 }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "12px 24px", borderRadius: 9999, background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <span style={{ fontSize: "0.85rem", color: "#ABABAB" }}>Think of us as</span>
-              <span style={{ fontFamily: "'Plus Jakarta Sans', system-ui", fontWeight: 700, fontSize: "0.9rem", background: "linear-gradient(135deg, #E63946, #C62833)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Grab + WeChat + Roblox</span>
-              <span style={{ fontSize: "0.85rem", color: "#ABABAB" }}>— built for Iraq</span>
+              <span style={{ fontFamily: "'Plus Jakarta Sans', system-ui", fontWeight: 700, fontSize: "0.9rem", background: "linear-gradient(135deg, #E63946, #C62833)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>We are building the superapp of Iraq</span>
             </div>
           </div>
         </Reveal>
@@ -651,12 +642,6 @@ function KurdistanMap() {
 
 // ─── CAREERS ───
 function CareersTeaser() {
-  const roles = [
-    { title: "Senior React Native Engineer", dept: "Engineering", city: "Erbil" },
-    { title: "Growth Marketing Lead", dept: "Marketing", city: "Erbil" },
-    { title: "Operations Manager", dept: "Operations", city: "Sulaymaniyah" },
-  ];
-  const deptColors: Record<string, string> = { Engineering: "#4361EE", Marketing: "#FF006E", Operations: "#2EC4B6" };
   return (
     <section id="careers" style={{ padding: "clamp(5rem,12vw,10rem) 0", background: "linear-gradient(180deg, #0A0A0A, #0F0F0F)" }}>
       <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 clamp(1rem,5vw,3rem)" }}>
@@ -665,26 +650,8 @@ function CareersTeaser() {
           <h2 style={{ fontFamily: "'Plus Jakarta Sans', system-ui", fontSize: "clamp(2rem,4vw,3rem)", fontWeight: 800, color: "#FAFAFA", lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: 16 }}>Join the Lezzoo Team</h2>
           <p style={{ color: "#888", maxWidth: 550, lineHeight: 1.7, fontSize: "1rem", marginBottom: 48 }}>From a Costa Coffee in Erbil to Y Combinator in San Francisco — and now building Iraq's digital future. We're 3,000+ strong and always looking for people who move fast.</p>
         </Reveal>
-        <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 32 }}>
-          {roles.map((r, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: "rgba(255,255,255,0.025)", border: "1px solid rgba(255,255,255,0.06)", borderRadius: 14, padding: "18px 24px", cursor: "pointer", transition: "all 0.3s", flexWrap: "wrap", gap: 12 }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.04)"; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.025)"; }}>
-                <div>
-                  <div style={{ color: "#FAFAFA", fontWeight: 600, fontSize: "0.95rem", marginBottom: 4 }}>{r.title}</div>
-                  <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                    <span style={{ background: `${deptColors[r.dept]}20`, color: deptColors[r.dept], padding: "2px 10px", borderRadius: 9999, fontSize: "0.7rem", fontWeight: 600 }}>{r.dept}</span>
-                    <span style={{ color: "#6B6B6B", fontSize: "0.8rem" }}>{r.city}</span>
-                  </div>
-                </div>
-                <span style={{ color: "#888", fontSize: "1.2rem" }}>→</span>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-        <Reveal delay={0.3}>
-          <a href="https://www.linkedin.com/company/lezzoo/jobs/" target="_blank" rel="noopener" style={{ color: "#E63946", fontWeight: 600, textDecoration: "none", fontSize: "0.95rem", borderBottom: "1px solid rgba(230,57,70,0.3)", paddingBottom: 2 }}>View All Open Roles →</a>
+        <Reveal delay={0.15}>
+          <a href="https://www.linkedin.com/company/lezzoo/jobs/" target="_blank" rel="noopener" style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "linear-gradient(135deg, #E63946, #C62833)", color: "#fff", padding: "14px 32px", borderRadius: 9999, fontSize: "1rem", fontWeight: 600, textDecoration: "none", transition: "transform 0.2s, box-shadow 0.2s" }} onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "scale(1.05)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 0 30px rgba(230,57,70,0.4)"; }} onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "scale(1)"; (e.currentTarget as HTMLElement).style.boxShadow = "none"; }}>View Open Roles on LinkedIn →</a>
         </Reveal>
       </div>
     </section>
@@ -729,8 +696,8 @@ function DownloadCTA() {
 // ─── FOOTER ───
 function Footer() {
   const columns = [
-    { title: "Company", links: [{ label: "Our Story", href: "#story" }, { label: "Ecosystem", href: "#ecosystem" }, { label: "Newsroom", href: "#" }, { label: "Careers", href: "#careers" }, { label: "Why Lezzoo", href: "#why" }] },
-    { title: "Products", links: [{ label: "Food Delivery", href: "#" }, { label: "Groceries", href: "#" }, { label: "Pharmacy", href: "#" }, { label: "Express", href: "#" }, { label: "Lezzoo Pay", href: "#" }, { label: "Games", href: "#" }, { label: "Jiran", href: "#" }] },
+    { title: "Company", links: [{ label: "Our Story", href: "/story" }, { label: "Ecosystem", href: "/ecosystem" }, { label: "Newsroom", href: "#" }, { label: "Careers", href: "/careers" }, { label: "Why Lezzoo", href: "/why-lezzoo" }] },
+    { title: "Products", links: [{ label: "Food Delivery", href: "/ecosystem" }, { label: "Groceries", href: "/ecosystem" }, { label: "Pharmacy", href: "/ecosystem" }, { label: "Express", href: "/ecosystem" }, { label: "Lezzoo Pay", href: "/ecosystem" }, { label: "Games", href: "/ecosystem" }, { label: "Jiran", href: "/ecosystem" }] },
     { title: "Get Involved", links: [{ label: "Become a Merchant", href: "https://ad-manager.lezzoodevs.com/merchant-registration" }, { label: "Become a Rider", href: "https://web-courier-app.lezzoodevs.com/driver-signup" }, { label: "Contact Us", href: "#" }] },
   ];
   const socials = [

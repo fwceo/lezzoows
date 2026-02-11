@@ -12,7 +12,7 @@ const CHAPTERS = [
   {
     year: "2015",
     title: "The Spark",
-    body: "Three young Kurds — Yadgar Merani, Rekar Botany, and Alaa Battal — sat in a Costa Coffee in Erbil, dreaming about the future. They weren't thinking about food delivery yet. They were thinking about digitizing reality itself. They formed a small company called Fastwares, built games, apps, and software — anything to sharpen their skills and push the boundaries of what was possible in Kurdistan.",
+    body: "Two young Kurds — Yadgar Merani and Rekar Botany — sat in a Costa Coffee in Erbil, dreaming about the future. They weren't thinking about food delivery yet. They were thinking about digitizing reality itself. They formed a small company called Fastwares, built games, apps, and software — anything to sharpen their skills and push the boundaries of what was possible in Kurdistan.",
     accent: "#E63946",
     icon: "☕",
   },
@@ -61,7 +61,7 @@ const CHAPTERS = [
   {
     year: "Today",
     title: "And This Is Just the Beginning",
-    body: "1M+ customers. 2,500+ vendors. 3,000+ team network. $200M+ in GMV. 5 cities and growing. From that Costa Coffee in Erbil to building one of the most ambitious super apps on the planet — in one of the world's most challenging markets. Every order delivered, every game played, every connection made on Jiran is proof that world-class technology can come from anywhere. Even from Kurdistan.",
+    body: "1M+ customers. 2,500+ vendors. 3,000+ team network. $200M+ in GMV. 6 cities and growing. From that Costa Coffee in Erbil to building one of the most ambitious super apps on the planet — in one of the world's most challenging markets. Every order delivered, every game played, every connection made on Jiran is proof that world-class technology can come from anywhere. Even from Kurdistan.",
     accent: "#E63946",
     icon: "🌍",
   },
@@ -70,7 +70,6 @@ const CHAPTERS = [
 const FOUNDERS = [
   { name: "Yadgar Merani", role: "CEO & Co-Founder", quote: "I was 23, pitching in San Francisco. Every time I said Iraq, they said no. Y Combinator said yes." },
   { name: "Rekar Botany", role: "CTO & Co-Founder", quote: "I delivered the first Lezzoo order myself — in my own car. Now we're serving millions." },
-  { name: "Alaa Battal", role: "Co-Founder", quote: "We didn't just want to build an app. We wanted to digitize reality for Kurdistan." },
 ];
 
 export default function StoryPage() {
@@ -83,7 +82,7 @@ export default function StoryPage() {
       <PageHero
         overline="Our Story"
         title="From a Coffee Shop to a Super App"
-        subtitle="The story of three friends from Erbil who set out to digitize Kurdistan — and ended up building Iraq's most ambitious tech company."
+        subtitle="The story of two friends from Erbil who set out to digitize Kurdistan — and ended up building Iraq's most ambitious tech company."
       />
 
       {/* Chapters */}

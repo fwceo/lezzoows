@@ -1,8 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #0A0A0A;
-  --foreground: #FAFAFA;
+:root,
+[data-theme="dark"] {
+  --bg: #0A0A0A;
+  --bg-alt: #0F0F0F;
+  --bg-elevated: #161616;
+  --bg-card: rgba(255,255,255,0.03);
+  --bg-card-hover: rgba(255,255,255,0.04);
+  --bg-glass: rgba(10,10,10,0.8);
+  --bg-overlay: rgba(10,10,10,0.97);
+  --bg-badge: rgba(255,255,255,0.06);
+  --text-primary: #FAFAFA;
+  --text-secondary: #ABABAB;
+  --text-muted: #888;
+  --text-dim: #6B6B6B;
+  --text-faint: #4A4A4A;
+  --border: rgba(255,255,255,0.06);
+  --border-light: rgba(255,255,255,0.1);
+  --border-faint: rgba(255,255,255,0.04);
+  --glow-opacity: 1;
+  --phone-bg: #1A1A1A;
+  --phone-notch: #0A0A0A;
+  --phone-indicator: rgba(255,255,255,0.2);
+  --gradient-story: linear-gradient(180deg, #0A0A0A, #161616);
+  --gradient-ecosystem: linear-gradient(135deg, #0A0A0A 0%, #1A0A1E 50%, #0A0A0A 100%);
+  --gradient-why: linear-gradient(135deg, #0A0A0A 0%, #110A14 50%, #0A0A0A 100%);
+  --gradient-careers: linear-gradient(180deg, #0A0A0A, #0F0F0F);
+  --logo-partner-color: rgba(255,255,255,0.15);
+  --quote-border: rgba(230,57,70,0.3);
+  --quote-mark: rgba(230,57,70,0.2);
+  --selection-color: #fff;
+}
+
+[data-theme="light"] {
+  --bg: #FAFAFA;
+  --bg-alt: #F0F0F0;
+  --bg-elevated: #E8E8E8;
+  --bg-card: rgba(0,0,0,0.03);
+  --bg-card-hover: rgba(0,0,0,0.05);
+  --bg-glass: rgba(255,255,255,0.85);
+  --bg-overlay: rgba(255,255,255,0.97);
+  --bg-badge: rgba(0,0,0,0.06);
+  --text-primary: #1A1A1A;
+  --text-secondary: #555555;
+  --text-muted: #777777;
+  --text-dim: #999999;
+  --text-faint: #BBBBBB;
+  --border: rgba(0,0,0,0.08);
+  --border-light: rgba(0,0,0,0.12);
+  --border-faint: rgba(0,0,0,0.04);
+  --glow-opacity: 0.5;
+  --phone-bg: #FFFFFF;
+  --phone-notch: #E0E0E0;
+  --phone-indicator: rgba(0,0,0,0.15);
+  --gradient-story: linear-gradient(180deg, #FAFAFA, #F0F0F0);
+  --gradient-ecosystem: linear-gradient(135deg, #FAFAFA 0%, #F5F0FF 50%, #FAFAFA 100%);
+  --gradient-why: linear-gradient(135deg, #FAFAFA 0%, #FFF5F6 50%, #FAFAFA 100%);
+  --gradient-careers: linear-gradient(180deg, #FAFAFA, #F0F0F0);
+  --logo-partner-color: rgba(0,0,0,0.25);
+  --quote-border: rgba(230,57,70,0.4);
+  --quote-mark: rgba(230,57,70,0.3);
+  --selection-color: #fff;
 }
 
 * {
@@ -16,10 +74,11 @@ html {
 }
 
 body {
-  background: #0A0A0A;
-  color: #FAFAFA;
+  background: var(--bg);
+  color: var(--text-primary);
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
